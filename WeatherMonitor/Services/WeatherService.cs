@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using WeatherMonitor.Data;
 using WeatherMonitor.Entities;
 using WeatherMonitor.Helpers;
 using WeatherMonitor.ServiceContracts;
@@ -10,7 +11,13 @@ namespace WeatherMonitor.Services
 {
     public class WeatherService: IWeatherService
     {
-        public async Task<WeatherForecastEntity> FetchWhWeatherForecast(string city)
+        private readonly ApplicationDbContext _context;
+
+        public WeatherService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+        public async Task<WeatherForecastEntity> FetchWeatherForecast(string city)
         {
             using var client = new HttpClient();
             try
@@ -28,6 +35,12 @@ namespace WeatherMonitor.Services
             {
                 throw new HttpRequestException("Error getting weather");
             }
+        }
+
+        public async Task SaveWeatherForecast(WeatherForecastEntity entity)
+        {
+            _context.WeatherForecasts.Add(entity);
+            await _context.SaveChangesAsync();
         }
     }
 }

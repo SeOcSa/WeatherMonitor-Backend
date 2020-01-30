@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 using MySql.Data.MySqlClient;
 using WeatherMonitor.Data;
@@ -26,6 +27,10 @@ namespace WeatherMonitor
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+            }));
             services.AddControllers().ConfigureApiBehaviorOptions(options =>
             {
                 options.SuppressMapClientErrors = true;
@@ -40,6 +45,7 @@ namespace WeatherMonitor
                 options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddTransient<IWeatherService, WeatherService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,15 +55,15 @@ namespace WeatherMonitor
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            
             app.UseHttpsRedirection();
 
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherForecast API"));
             app.UseRouting();
-
             app.UseAuthorization();
-
+            
+            app.UseCors("ApiCorsPolicy");
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sebastian.sas.INTERNAL\\RiderProjects\\WeatherMonitor-Backend\\WeatherMonitor\\WeatherMonitor.csproj": {}
+    "C:\\Users\\sebastian.sas.INTERNAL\\WeatherMonitor-Backend\\WeatherMonitor-Backend\\WeatherMonitor\\WeatherMonitor.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sebastian.sas.INTERNAL\\RiderProjects\\WeatherMonitor-Backend\\WeatherMonitor\\WeatherMonitor.csproj": {
+    "C:\\Users\\sebastian.sas.INTERNAL\\WeatherMonitor-Backend\\WeatherMonitor-Backend\\WeatherMonitor\\WeatherMonitor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sebastian.sas.INTERNAL\\RiderProjects\\WeatherMonitor-Backend\\WeatherMonitor\\WeatherMonitor.csproj",
+        "projectUniqueName": "C:\\Users\\sebastian.sas.INTERNAL\\WeatherMonitor-Backend\\WeatherMonitor-Backend\\WeatherMonitor\\WeatherMonitor.csproj",
         "projectName": "WeatherMonitor",
-        "projectPath": "C:\\Users\\sebastian.sas.INTERNAL\\RiderProjects\\WeatherMonitor-Backend\\WeatherMonitor\\WeatherMonitor.csproj",
+        "projectPath": "C:\\Users\\sebastian.sas.INTERNAL\\WeatherMonitor-Backend\\WeatherMonitor-Backend\\WeatherMonitor\\WeatherMonitor.csproj",
         "packagesPath": "C:\\Users\\sebastian.sas.INTERNAL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sebastian.sas.INTERNAL\\RiderProjects\\WeatherMonitor-Backend\\WeatherMonitor\\obj\\",
+        "outputPath": "C:\\Users\\sebastian.sas.INTERNAL\\WeatherMonitor-Backend\\WeatherMonitor-Backend\\WeatherMonitor\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

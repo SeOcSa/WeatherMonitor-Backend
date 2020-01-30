@@ -5,6 +5,7 @@ namespace WeatherMonitor.ServiceContracts
 {
     public interface IWeatherService
     {
-        public Task<WeatherForecastEntity> FetchWhWeatherForecast(string city);
+        public Task<WeatherForecastEntity> FetchWeatherForecast(string city);
+        public Task SaveWeatherForecast(WeatherForecastEntity entity);
     }
 }

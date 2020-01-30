@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WeatherMonitor.Helpers;
@@ -10,7 +11,7 @@ using WeatherMonitor.ViewModels;
 namespace WeatherMonitor.Controllers
 {
     [ApiController]
-    [Route("Weather")]
+    [Route("/api/Weather")]
     public class WeatherForecastController : ControllerBase
     {
         
@@ -32,10 +33,12 @@ namespace WeatherMonitor.Controllers
         {
             if (string.IsNullOrEmpty(city)) return BadRequest();
 
-            var entity = await _repo.FetchWhWeatherForecast(city);
+            var entity = await _repo.FetchWeatherForecast(city);
 
             if (entity == null) return NotFound();
 
+            await _repo.SaveWeatherForecast(entity);
+            
             return Ok(MapHelper.MapToViewModel(entity));
         }
     }
