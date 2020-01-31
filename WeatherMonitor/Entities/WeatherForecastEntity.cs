@@ -10,5 +10,9 @@ namespace WeatherMonitor.Entities
         public string Humidity { get; set; }
         public string Pressure { get; set; }
         public string Temperature { get; set; }
+        public string WindSpeed { get; set; }
+        public string Country { get; set; }
+        public string Sunrise { get; set; }
+        public string Sunset { get; set; }
     }
 }

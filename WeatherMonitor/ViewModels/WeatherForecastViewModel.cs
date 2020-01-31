@@ -11,5 +11,13 @@ namespace WeatherMonitor.ViewModels
         public string Humidity { get; set; }
         public string Pressure { get; set; }
         public string Temperature { get; set; }
+        public string WindSpeed { get; set; }
+        public string Day { get; set; }
+        public string Month { get; set; }
+        public string Year { get; set; }
+        public string Time { get; set; }
+        public string Country { get; set; }
+        public string Sunrise { get; set; }
+        public string Sunset { get; set; }
     }
 }

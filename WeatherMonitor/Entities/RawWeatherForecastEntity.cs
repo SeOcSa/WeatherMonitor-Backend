@@ -8,5 +8,7 @@ namespace WeatherMonitor.Entities
         public RawMainWeatherForecastEntity Main { get; set; }
         public string Name { get; set; }
         public IEnumerable<RawWeatherForecastDetailsEntity> Weather { get; set; }
+        public RawWindEntity Wind { get; set; }
+        public RawSysEntity Sys { get; set; }
     }
 }

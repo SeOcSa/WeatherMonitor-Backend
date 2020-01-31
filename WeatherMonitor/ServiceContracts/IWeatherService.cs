@@ -9,5 +9,6 @@ namespace WeatherMonitor.ServiceContracts
         public Task<WeatherForecastEntity> FetchWeatherForecast(string city);
         public Task SaveWeatherForecast(WeatherForecastEntity entity);
         public Task<IEnumerable<WeatherForecastEntity>> GetWeatherForecastHistory();
+        
     }
 }

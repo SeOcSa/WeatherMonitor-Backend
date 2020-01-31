@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Globalization;
+using System.Linq;
 using WeatherMonitor.Entities;
 using WeatherMonitor.ViewModels;
 
@@ -18,12 +20,17 @@ namespace WeatherMonitor.Helpers
                 WeatherConditionIcon = weatherDetails?.Icon,
                 Humidity = rawEntity.Main.Humidity,
                 Pressure = rawEntity.Main.Pressure,
-                Temperature = rawEntity.Main.Temp
+                Temperature = rawEntity.Main.Temp,
+                WindSpeed = rawEntity.Wind.Speed,
+                Country = rawEntity.Sys.Country,
+                Sunrise = new DateTime().AddSeconds(long.Parse(rawEntity.Sys.Sunrise)).ToShortTimeString(),
+                Sunset =  new DateTime().AddSeconds(long.Parse(rawEntity.Sys.Sunset)).ToShortTimeString()
             };
         }
 
         public static WeatherForecastViewModel MapToViewModel(WeatherForecastEntity entity)
         {
+            var dateTimeNow = DateTime.Now;
             return new WeatherForecastViewModel
             {
                 CityName = entity.CityName,
@@ -32,7 +39,15 @@ namespace WeatherMonitor.Helpers
                 WeatherConditionIcon = entity.WeatherConditionIcon,
                 Humidity = entity.Humidity,
                 Pressure = entity.Pressure,
-                Temperature = entity.Temperature
+                Temperature = entity.Temperature,
+                Day = dateTimeNow.DayOfWeek.ToString(),
+                Month = dateTimeNow.ToString("MMM", CultureInfo.InvariantCulture),
+                Year = dateTimeNow.Year.ToString(),
+                Time = dateTimeNow.ToShortTimeString(),
+                WindSpeed = entity.WindSpeed,
+                Country = entity.Country,
+                Sunrise = entity.Sunrise,
+                Sunset = entity.Sunset
             };
         }
     }
