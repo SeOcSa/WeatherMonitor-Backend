@@ -1,0 +1,32 @@
+[
+  {
+    "Id": "665087",
+    "CityName": "Timisoara",
+    "WeatherCondition": "Clouds",
+    "WeatherConditionDetails": "broken clouds",
+    "WeatherConditionIcon": "04d",
+    "Humidity": "66",
+    "Pressure": "1012",
+    "Temperature": "8.94",
+    "WindSpeed": "5.7",
+    "Country": "RO",
+    "Sunrise": "5:58 AM",
+    "Sunset": "3:37 PM",
+    "CreatedDateTime": "01/30/2020 00:00:00"
+  },
+  {
+    "Id": "686253",
+    "CityName": "Arad",
+    "WeatherCondition": "Rain",
+    "WeatherConditionDetails": "light rain",
+    "WeatherConditionIcon": "10d",
+    "Humidity": "70",
+    "Pressure": "1011",
+    "Temperature": "8.96",
+    "WindSpeed": "5.7",
+    "Country": "RO",
+    "Sunrise": "5:58 AM",
+    "Sunset": "3:34 PM",
+    "CreatedDateTime": "01/31/2020 00:00:00"
+  }
+]
