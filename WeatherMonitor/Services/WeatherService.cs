@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using WeatherMonitor.Data;
 using WeatherMonitor.Entities;
@@ -41,6 +44,11 @@ namespace WeatherMonitor.Services
         {
             _context.WeatherForecasts.Add(entity);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<WeatherForecastEntity>> GetWeatherForecastHistory()
+        {
+            return await _context.WeatherForecasts.ToListAsync();
         }
     }
 }

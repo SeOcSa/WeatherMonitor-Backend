@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -40,6 +42,23 @@ namespace WeatherMonitor.Controllers
             await _repo.SaveWeatherForecast(entity);
             
             return Ok(MapHelper.MapToViewModel(entity));
+        }
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("[action]")]
+        [ProducesResponseType(typeof(IEnumerable<WeatherForecastViewModel>), (int) HttpStatusCode.OK)]
+        [ProducesResponseType((int) HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> GetWeatherForecastHistory()
+        {
+
+            var entities = await _repo.GetWeatherForecastHistory();
+            if (entities == null) return NotFound();
+            var weatherForecastEntities = entities.ToList();
+            if (!weatherForecastEntities.Any()) return NotFound();
+
+            var result = weatherForecastEntities.Select(MapHelper.MapToViewModel).ToList();
+            
+            return Ok(result);
         }
     }
 }

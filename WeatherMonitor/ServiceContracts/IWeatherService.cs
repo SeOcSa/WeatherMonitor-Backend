@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using WeatherMonitor.Entities;
 
 namespace WeatherMonitor.ServiceContracts
@@ -7,5 +8,6 @@ namespace WeatherMonitor.ServiceContracts
     {
         public Task<WeatherForecastEntity> FetchWeatherForecast(string city);
         public Task SaveWeatherForecast(WeatherForecastEntity entity);
+        public Task<IEnumerable<WeatherForecastEntity>> GetWeatherForecastHistory();
     }
 }
