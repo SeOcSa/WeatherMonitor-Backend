@@ -24,7 +24,8 @@ namespace WeatherMonitor.Helpers
                 WindSpeed = rawEntity.Wind.Speed,
                 Country = rawEntity.Sys.Country,
                 Sunrise = new DateTime().AddSeconds(long.Parse(rawEntity.Sys.Sunrise)).ToShortTimeString(),
-                Sunset =  new DateTime().AddSeconds(long.Parse(rawEntity.Sys.Sunset)).ToShortTimeString()
+                Sunset =  new DateTime().AddSeconds(long.Parse(rawEntity.Sys.Sunset)).ToShortTimeString(),
+                CreatedDateTime = DateTime.Today.ToString(CultureInfo.InvariantCulture)
             };
         }
 

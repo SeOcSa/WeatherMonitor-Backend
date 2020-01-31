@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -43,6 +45,25 @@ namespace WeatherMonitor.Controllers
             
             return Ok(MapHelper.MapToViewModel(entity));
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("[action]")]
+        [ProducesResponseType(typeof(WeatherForecastViewModel), (int) HttpStatusCode.OK)]
+        [ProducesResponseType((int) HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> GetLastWeatherForecast()
+        {
+            var entities = await _repo.GetWeatherForecastHistory();
+            if (entities == null) return NotFound();
+            var weatherForecastEntities = entities.ToList();
+            if (!weatherForecastEntities.Any()) return NotFound();
+
+            var result = weatherForecastEntities.OrderBy(x => x.CreatedDateTime).Select(MapHelper.MapToViewModel)
+                .ToList().FirstOrDefault();
+            
+            return Ok(result);
+        }
+        
         [AllowAnonymous]
         [HttpGet]
         [Route("[action]")]
@@ -56,7 +77,9 @@ namespace WeatherMonitor.Controllers
             var weatherForecastEntities = entities.ToList();
             if (!weatherForecastEntities.Any()) return NotFound();
 
-            var result = weatherForecastEntities.Select(MapHelper.MapToViewModel).ToList();
+            var result = weatherForecastEntities
+                .Where(x => x.CreatedDateTime != DateTime.Today.ToString(CultureInfo.InvariantCulture))
+                .Select(MapHelper.MapToViewModel).OrderBy(x => x.CityName).ToList();
             
             return Ok(result);
         }

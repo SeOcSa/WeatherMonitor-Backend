@@ -43,7 +43,12 @@ namespace WeatherMonitor.Services
         public async Task SaveWeatherForecast(WeatherForecastEntity entity)
         {
             var existing = _context.WeatherForecasts.FirstOrDefault(x => x.Id == entity.Id);
-            if(existing != null) return;
+            if (existing != null)
+            {
+                _context.WeatherForecasts.Update(entity);
+                await _context.SaveChangesAsync();
+            }
+            
             _context.WeatherForecasts.Add(entity);
             await _context.SaveChangesAsync();
         }

@@ -1,13 +1,10 @@
-using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
-using MySql.Data.MySqlClient;
 using WeatherMonitor.Data;
 using WeatherMonitor.ServiceContracts;
 using WeatherMonitor.Services;
@@ -34,15 +31,18 @@ namespace WeatherMonitor
             services.AddControllers().ConfigureApiBehaviorOptions(options =>
             {
                 options.SuppressMapClientErrors = true;
-            });;
-
+            });
+       
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo {Title = "WeatherForecast API", Version = "1"});
             });
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+                {
+                    options.UseMySql(Configuration.GetConnectionString("DefaultConnection"));
+                    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+                });
             
             services.AddTransient<IWeatherService, WeatherService>();
             

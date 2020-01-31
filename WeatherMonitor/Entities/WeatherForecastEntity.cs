@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace WeatherMonitor.Entities
 {
     public class WeatherForecastEntity
     {
+        [Key]
         public string Id { get; set; }
         public string CityName { get; set; }
         public string WeatherCondition { get; set; }
@@ -14,5 +17,6 @@ namespace WeatherMonitor.Entities
         public string Country { get; set; }
         public string Sunrise { get; set; }
         public string Sunset { get; set; }
+        public string CreatedDateTime { get; set; }
     }
 }
