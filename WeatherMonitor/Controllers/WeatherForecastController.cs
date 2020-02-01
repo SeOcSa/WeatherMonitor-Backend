@@ -59,7 +59,7 @@ namespace WeatherMonitor.Controllers
             if (!weatherForecastEntities.Any()) return NotFound();
 
             var result = weatherForecastEntities.OrderBy(x => x.CreatedDateTime).Select(MapHelper.MapToViewModel)
-                .ToList().FirstOrDefault();
+                .ToList().LastOrDefault();
             
             return Ok(result);
         }
