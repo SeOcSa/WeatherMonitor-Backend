@@ -4,7 +4,7 @@
 - Install/Configure a MariaDB >= 10.3 database (version 10.3 or higher)
 - Import data from weatherforecast_weatherforecasts.json I'm using DataGrip ( optional )
 - To have data use frontend and type a city name.
-- To see a history of search you have to change a CreatedDateTime for an registration or way till next day.
+- To see a history of search you have to change a CreatedDateTime for an registration or wait till next day.
 ## Dev
  ### Run
 - Generate Migration: dotnet ef migrations add migration_name ApplicationDbContext
