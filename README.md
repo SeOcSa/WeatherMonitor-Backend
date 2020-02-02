@@ -1,6 +1,6 @@
 # WeatherMonitor-Backend
 ## Setup
-- Install NET Core SDK 2.2
+- Install NET Core SDK 3.0
 - Install/Configure a MariaDB >= 10.3 database (version 10.3 or higher)
 - Import data from weatherforecast_weatherforecasts.json I'm using DataGrip ( optional )
 - To have data use frontend and type a city name.
