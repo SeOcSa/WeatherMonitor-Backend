@@ -47,6 +47,8 @@ namespace WeatherMonitor.Services
             {
                 _context.WeatherForecasts.Update(entity);
                 await _context.SaveChangesAsync();
+                return;
+                
             }
             
             _context.WeatherForecasts.Add(entity);
